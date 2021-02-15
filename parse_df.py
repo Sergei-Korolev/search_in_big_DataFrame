@@ -56,9 +56,7 @@ if __name__ == '__main__':
     for gm_chunk in data:
         # print(gm_chunk)
         new_df = 0
-        new_df = gm_chunk.loc[gm_chunk[df_coumns_names[search_column]].str.contains(
-                f'{search_word}',
-                na=False)]
+        new_df = gm_chunk.loc[gm_chunk[df_coumns_names[search_column]].str.contains(f'{search_word}', na=False)]
         if not new_df.empty:
             new_df.to_csv(f'out/{search_word}.csv',
                           mode='a',
