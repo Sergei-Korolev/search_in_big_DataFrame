@@ -12,4 +12,4 @@ modules: os, pandas
 3)Use it
 
 
-Note: output file only in csv with sep=','. If u need something else just replace 'new_df.to_cvs' to another method.
+Note: output file only in csv with sep=','. If u need something else just, replace 'new_df.to_cvs' to another method.
