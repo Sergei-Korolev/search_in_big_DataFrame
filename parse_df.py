@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 
-PATH_FILE_IN = 'VK_1M.csv'
+PATH_FILE_IN = '<your file name>'
 SEPARATOR = ','
 PATH_DIRECTORY_OUT = 'out'  # only directory without '/' in the end
 ENCODING = 'utf8'
@@ -13,14 +13,15 @@ BATCH = 0
 
 
 def show_list_column(data):
-    """Show for user all columns with index of DataFrame and return list of columns."""
-    df = pd.read_csv(PATH_FILE_IN, encoding=ENCODING, chunksize=1, sep=separator)
+    """Show for user all columns with index of DataFrame
+    and return list of columns.
+    """
     for gm_chunk in data:
         df_coumns_names = list(gm_chunk.columns)
         df_coumns_names_with_index = [(i, df_coumns_names.index(i)) for i in df_coumns_names]
         print('\nAll columns in df: \n')
         for i, k in df_coumns_names_with_index:
-            print(i, '-',k)
+            print(i, '-', k)
         break
     return df_coumns_names
 
@@ -32,7 +33,7 @@ def create_out_folder():
 
 if __name__ == '__main__':
     create_out_folder()
-    
+
     chunksize = input(f'\nEnter number of chunksize for DataFrame[{CHUNKSIZE}]: ')
     if chunksize == '':
         chunksize = CHUNKSIZE
@@ -47,12 +48,15 @@ if __name__ == '__main__':
     if separator == '':
         separator = SEPARATOR
 
-    data = pd.read_csv(PATH_FILE_IN, encoding=ENCODING, chunksize=chunksize, sep=separator)
+    data = pd.read_csv(PATH_FILE_IN,
+                       encoding=ENCODING,
+                       chunksize=chunksize,
+                       sep=separator)
 
     df_coumns_names = show_list_column(data)
     search_column = int(input('\nEnter index of the column you want to search: '))
     search_word = input('\nText for search: ')
-    
+
     for gm_chunk in data:
         # print(gm_chunk)
         new_df = 0
